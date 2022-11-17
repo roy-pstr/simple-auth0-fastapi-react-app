@@ -6,6 +6,7 @@ Currently supports:
 - Signup
 - Signup/Login with a google account
 
+
 ## Installation
 
 Use the package manager [poetry](https://python-poetry.org/docs/) to install python dependencies and [npm](https://docs.npmjs.com/cli/v6/commands/npm-install) to install client dependencies.
