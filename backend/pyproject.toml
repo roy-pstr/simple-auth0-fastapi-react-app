@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "fastapi-auth0-backend"
+version = "0.1.0"
+description = "A FastAPI server for authentication (login) and autherization (scopes) using auth0 service"
+authors = ["roy-pstr <roy.pasternakk@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "fastapi_auth0_backend"}]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+fastapi = {extras = ["all"], version = "^0.87.0"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
