@@ -26,7 +26,11 @@ app = FastAPI()
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
-            
+
+@app.get("/ping")
+async def root():
+    return "pong"
+
 # @app.post("/token")
 # async def login_for_access_token(
 #     form_data: OAuth2PasswordRequestForm = Depends(), auth0_api: Auth0API = Depends(get_auth0)

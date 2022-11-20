@@ -17,16 +17,27 @@ poetry install
 cd ../frontend
 npm install
 ```
-
-## Usage
+## Testing
 ### Backend
 ```bash
-poetry run uvicorn src.main:app --host 0.0.0.0 --port 80
+./backend/scripts/test.sh
 ```
 
 ### Frontend
 ```bash
-npm start
+./frontend/scripts/test.sh
+```
+
+## Usage
+
+### Backend
+```bash
+./backend/scripts/run.sh
+```
+
+### Frontend
+```bash
+./frontend/scripts/run.sh
 ```
 
 ## Contributing
