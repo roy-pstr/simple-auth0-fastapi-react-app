@@ -17,6 +17,25 @@ poetry install
 cd ../frontend
 npm install
 ```
+
+### Set environment
+```bash
+cd backend
+touch .env
+```
+Set the following variables in the `.env` file:
+```bash
+AUTH0_DOMAIN = 
+AUTH0_ALGORITHMS = 
+AUTH0_ISSUER = 
+AUTH0_DEFAULT_DB_CONNECTION  = 
+AUTH0_API_DEFAULT_AUDIENCE = 
+AUTH0_APPLICATION_CLIENT_ID = 
+AUTH0_TEST_USERNAME=
+AUTH0_TEST_PASSWORD=
+```
+
+
 ## Testing
 ### Backend
 ```bash

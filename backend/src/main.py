@@ -8,8 +8,7 @@ from fastapi import Security
 from src.auth0 import Auth0API
 from src.dependencies import get_auth0
 from src.security.oauth import oauth2_scheme
-from src.security.funcs import verify_token
-from src.security.funcs import verify_token_scoped
+from src.routes.debug import router as debug_router
 # from src.apis.dependencies import get_auth0_management
 # from src.utils.auth0 import CreateUser
 # from src.utils.auth0 import Auth0ManagementAPI
@@ -34,24 +33,12 @@ settings: Settings = get_settings()
 async def root():
     return {"message": "Hello from fullstack-react-fastapi-auth0 backend server. try /docs."}
 
-@app.get("/ping")
-async def ping():
-    return "pong"
-
-@app.get("/private", dependencies=[Depends(verify_token)])
-def private():
-    """A valid access token is required to access this route"""
-    response = "Hello from a private endpoint! If you see this, you're authenticated."
-    return response
-
-@app.get(
-    "/private-scoped",
-    dependencies=[Security(verify_token_scoped, scopes=["test:read"])],
+# debug route
+app.include_router(
+    debug_router,
+    prefix="/debug",
+    tags=["Debug"],
 )
-def private_scoped():
-    """A valid access token with scope of test:read is required to access this route"""
-    response = "Hello from a private endpoint! if you see this, you're authenticated and have the scope of test:read."
-    return response
 
 @app.post("/token")
 async def login_for_access_token(
