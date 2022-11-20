@@ -8,8 +8,10 @@ from fastapi.middleware.cors import CORSMiddleware
 # from src.apis.dependencies import get_auth0_management
 # from src.utils.auth0 import CreateUser
 # from src.utils.auth0 import Auth0ManagementAPI
+from src.config import get_settings, Settings
 
 app = FastAPI()
+settings: Settings = get_settings()
 
 # origins = [
 #     "http://localhost:3000",
