@@ -20,7 +20,8 @@ def headers_with_authorization(client: TestClient):
     access_token = response.json().get("access_token")
     return {"Authorization": f"Bearer {access_token}"}
 
-# @pytest.fixture(scope="session")
-# def test_client_auth(headers_with_authorization: dict):
-#     with TestClient(app, headers=headers_with_authorization) as test_client:
-#         yield test_client
+@pytest.fixture(scope="session")
+def test_client_auth(headers_with_authorization: dict):
+    with TestClient(app) as test_client:
+        test_client.headers = headers_with_authorization
+        yield test_client
