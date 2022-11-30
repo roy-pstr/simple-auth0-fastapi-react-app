@@ -33,6 +33,7 @@ npm install
 ```
 
 ### Set environment
+#### Backend
 ```bash
 cd backend
 touch .env
@@ -52,6 +53,18 @@ AUTH0_MANAGEMENT_API_CLIENT_SECRET=
 AUTH0_MANAGEMENT_API_AUDIENCE=
 ```
 Those values are from Auth0. You should have a tenant with domain, an API and an Application 
+
+#### Frontend
+```bash
+cd frontend
+touch .env
+```
+Set the following variables in the `.env` file:
+```bash
+REACT_APP_BACKEND_URL="http://localhost"
+REACT_APP_AUTH0_DOMAIN=
+REACT_APP_AUTH0_API_DEFAULT_AUDIENCE=
+```
 
 ## Testing
 ### Backend
