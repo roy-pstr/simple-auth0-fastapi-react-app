@@ -2,21 +2,21 @@
 
 This is a simple frontend and backend service that uses Auth0 as 3rd party authentication service. Backend is in FastAPI, integrated with auth0-python client. Frontend is vanilla react application contains simple login and signup forms, includes support in google account login (through Auth0).
 
-Application features:
-Client-side:
+## Application Features
+### Client-side
 - Login (username and password)
 - Signup (username and password)
 - Google account login
 
-Server-side:
-Endpoints:
+### Server-side
+#### Endpoints
 - POST /token : exchange username and password with access token (JWT) from Auth0 service
 - GET /me : exchange access token with user info
 - POST /user : create user in Auth0 database connection
 - DELETE /user/{user_id} : remove user from Auth0 database connection
 * When using google account login for the first time a user entity will be created in Auth0 with corresponding user id. This user can be deleted (from Auth0) using the user_id and the DELETE /user endpoint. the social login occurs directly between the client side and the Auth0 service w/o going through the backend.
 
-Security features:
+#### Authentication & Authorizations
 - JWT verification
 - Private endpoint example (must have access token to get access)
 - Scoped-private endpoint example (must have access token and permissions to get access)
@@ -51,7 +51,7 @@ AUTH0_MANAGEMENT_API_CLIENT_ID=
 AUTH0_MANAGEMENT_API_CLIENT_SECRET=
 AUTH0_MANAGEMENT_API_AUDIENCE=
 ```
-
+Those values are from Auth0. You should have a tenant with domain, an API and an Application 
 
 ## Testing
 ### Backend
