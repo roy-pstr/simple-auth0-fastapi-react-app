@@ -93,8 +93,7 @@ TBA
 
 ## Open Tasks
 - A script for auto create Auth0 environment given Auth0 Management credentials only. 
-- Upgrade frontend user interface a bit,
-- Add .env file to frontend side.
+- Upgrade frontend user interfaceץ
 
 ## Contributing
 
