@@ -1,4 +1,4 @@
-# Fullstack react fastapi auth0
+# Simple Auth0 FastAPI React Application
 
 This is a simple frontend and backend service that uses Auth0 as 3rd party authentication service. Backend is in FastAPI, integrated with auth0-python client. Frontend is vanilla react application contains simple login and signup forms, includes support in google account login (through Auth0).
 
