@@ -52,7 +52,8 @@ AUTH0_MANAGEMENT_API_CLIENT_ID=
 AUTH0_MANAGEMENT_API_CLIENT_SECRET=
 AUTH0_MANAGEMENT_API_AUDIENCE=
 ```
-Those values are from Auth0. You should have a tenant with domain, an API and an Application 
+Those values are from Auth0. You should have a tenant for the domain, an API and an Application.</br>
+For passing all tests create a test user and add a 'read:test' permission to this test user.
 
 #### Frontend
 ```bash
