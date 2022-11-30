@@ -17,10 +17,10 @@ class Settings(BaseSettings):
     AUTH0_APPLICATION_CLIENT_ID: str
     AUTH0_TEST_USERNAME: str
     AUTH0_TEST_PASSWORD: str
-    # # Management API
-    # AUTH0_MANAGEMENT_API_CLIENT_ID: str
-    # AUTH0_MANAGEMENT_API_CLIENT_SECRET: str
-    # AUTH0_MANAGEMENT_API_AUDIENCE: str = "https://larium-dev.us.auth0.com/api/v2/"
+    # Management API
+    AUTH0_MANAGEMENT_API_CLIENT_ID: str
+    AUTH0_MANAGEMENT_API_CLIENT_SECRET: str
+    AUTH0_MANAGEMENT_API_AUDIENCE: str
 
     class Config:
         """
