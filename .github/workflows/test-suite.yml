@@ -27,6 +27,6 @@ jobs:
           virtualenvs-create: true
 
       - name: "Backend - install dependencies"
-        run: "backend/scripts/install"
+        run: "cd backend && scripts/install"
       - name: "Backend - run tests"
         run: "backend/scripts/test"
