@@ -5,7 +5,6 @@ description = "A FastAPI server for authentication (login) and autherization (sc
 authors = ["roy-pstr <roy.pasternakk@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "fastapi_auth0_backend"}]
 
 [tool.poetry.dependencies]
 python = "^3.7"
