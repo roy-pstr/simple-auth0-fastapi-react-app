@@ -29,4 +29,4 @@ jobs:
       - name: "Backend - install dependencies"
         run: "cd backend && scripts/install"
       - name: "Backend - run tests"
-        run: "backend/scripts/test"
+        run: "cd backend && scripts/test"
