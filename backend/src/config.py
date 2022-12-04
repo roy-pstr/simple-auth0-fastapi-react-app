@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     AUTH0_DEFAULT_DB_CONNECTION: str = "Username-Password-Authentication"
     AUTH0_API_DEFAULT_AUDIENCE: str
     AUTH0_APPLICATION_CLIENT_ID: str
+    AUTH0_APPLICATION_CLIENT_SECRET: str
     AUTH0_TEST_USERNAME: str
     AUTH0_TEST_PASSWORD: str
     # Management API
