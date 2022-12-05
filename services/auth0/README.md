@@ -8,12 +8,25 @@ In this application we use the following features of Auth0:
 ## Quick Setup of Auth0 Account
 At the end of this stage you should have all the environment variables needed to run the application.
 1. Sign Up
-2. Create tenant
-3. Create Application
+2. Create a tenant
+    - Go to "Settings" -> "Custom Domain" -> and here you should get your tenant domain name (e.g. For tenant name "simple-app-demo" and us region the domain is: "simple-app-demo.us.auth0.com") 
+    - AUTH0_DOMAIN="simple-app-demo.us.auth0.com"
+    - Go to "Settings" -> "API Authorization Settings" -> set "Default Directory" to "Username-Password-Authentication", and "Save".
+3. Create an API
+    - "Applications" -> "APIs" -> "+ Create API" (Name: Simple App Backend, Identifier: https://simple-app-backend)
+    - AUTH0_API_DEFAULT_AUDIENCE="https://simple-app-backend-fastapi"
+    - Goto your API -> "Permissions" -> Add permission of "test:read"
+    - Goto your API -> Scroll down to "RBAC Settings" -> "Enable RBAC" -> "Save"
+4. Create an Application
+    - "Applications" -> "Applications" -> "+ Create Application" -> "Single Page Web Applications", Name: "Backend Test App"
+    - Goto "Backend Test App" and use the Client ID and Client Secret for AUTH0_APPLICATION_CLIENT_ID, AUTH0_APPLICATION_CLIENT_SECRET.
     - Add "http://localhost/token/callback" to "Allowed Callback URLs" (this is for the social login flow to allow callback from auth0 back to the server).
-4. Create API
-    - create permission 'test:read'
 5. Create test user
-    - Add permission: 'test:read'
+    - "User Management" -> "+ Create User" -> Enter any email and password, "Create".
+    - Use those credentials for AUTH0_TEST_USERNAME and AUTH0_TEST_PASSWORD
+    - Goto the user you created -> "Permissions" -> "Assign Permissions" -> Select "Simple App Backend" -> Select "test:read" -> "Add"
+6. Auth0 Management 
+    - "Applications" -> "Applications" -> "Auth0 Management API (Test Application)" -> "APIs" -> Expand "Auth0 Management API" and add "delete:users" and "create:users" permissions.
+    - Use Client ID and Secret of "Auth0 Management API (Test Application)" for AUTH0_MANAGEMENT_API_CLIENT_ID and AUTH0_MANAGEMENT_API_CLIENT_Secret
+    - "Applications" -> "APIs" -> "Auth0 Management API" -> Use "Identifier" for AUTH0_MANAGEMENT_API_AUDIENCE
 
-TBA...
