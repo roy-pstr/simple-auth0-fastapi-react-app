@@ -1,9 +1,11 @@
 import typing
 from fastapi import APIRouter
 from fastapi import Depends
-from pydantic import BaseModel
-from src.security.funcs import verify_token
+from fastapi import HTTPException
+from pydantic import BaseModel, AnyUrl
+from auth0.v3.exceptions import Auth0Error
 
+from src.security.funcs import verify_token
 from src.core.dependencies import get_auth0_users_client, get_auth0_management_client, authentication, management
 from src.core.config import get_settings, Settings
 
@@ -16,7 +18,10 @@ async def read_user_me(
     access_token: str = Depends(verify_token), 
     auth0_users: authentication.Users = Depends(get_auth0_users_client)
 ) -> dict:
-    userinfo = auth0_users.userinfo(access_token=access_token)   
+    try:
+        userinfo = auth0_users.userinfo(access_token=access_token)   
+    except Auth0Error as e:
+        raise HTTPException(status_code=e.status_code, detail=e.message)
     return userinfo
 
 class CreateUser(BaseModel):
@@ -31,7 +36,7 @@ class CreateUser(BaseModel):
     given_name: typing.Optional[str] = None
     family_name: typing.Optional[str] = None
     nickname: typing.Optional[str] = None
-    picture: typing.Optional[str] = None
+    picture: typing.Optional[AnyUrl] = None
 @router.post("/")
 async def create_new_user(
     create_user: CreateUser,
@@ -42,9 +47,12 @@ async def create_new_user(
     if verify_email=True -> send verification mail
     """
     # Create user in auth0 db
-    response = auth0_mgmt_client.users.create(
-        body=create_user.dict(exclude_none=True)
+    try:
+        response = auth0_mgmt_client.users.create(
+            body=create_user.dict(exclude_none=True)
         )
+    except Auth0Error as e:
+        raise HTTPException(status_code=e.status_code, detail=e.message)
     return  response
 
 @router.delete("/{user_id}", dependencies=[Depends(verify_token)])
@@ -55,8 +63,10 @@ async def delete_user(
     """
     Remove user from auth0.
     """
-    response = auth0_mgmt_client.users.delete(id=user_id)
-    
+    try:
+        response = auth0_mgmt_client.users.delete(id=user_id)
+    except Auth0Error as e:
+        raise HTTPException(status_code=e.status_code, detail=e.message)
     return {
         "auth0": response
     }

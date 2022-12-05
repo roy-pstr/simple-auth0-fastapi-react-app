@@ -10,7 +10,9 @@ from src.core.config import get_settings, Settings
 app = FastAPI()
 settings: Settings = get_settings()
 
-origins = []
+origins = [
+    "http://localhost:3000",
+]
 
 app.add_middleware(
     CORSMiddleware,
