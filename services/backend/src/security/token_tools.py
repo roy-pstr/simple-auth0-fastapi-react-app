@@ -10,7 +10,7 @@ from jose import JWTError
 from jose import jwt
 
 from src.security.token import AccessToken
-from src.config import get_settings
+from src.core.config import get_settings
 
 
 CREDENTIALS_EXCEPTION = HTTPException(
@@ -70,7 +70,7 @@ class TokenTools:
                 key=rsa_key,
                 algorithms=[self.settings.AUTH0_ALGORITHMS],
                 audience=self.settings.AUTH0_API_DEFAULT_AUDIENCE,
-                issuer=self.settings.AUTH0_ISSUER,
+                issuer=f"https://{self.settings.AUTH0_DOMAIN}/",
             )
 
         except JWTError:
@@ -85,11 +85,6 @@ class TokenTools:
         """
         verified_claim = self.verified_claim()
         if security_scopes:
-            PERMISSIONS_EXCEPTION = HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Not enough permissions.",
-                headers={"WWW-Authenticate": f'Bearer scope="{security_scopes.scope_str}"'},
-            )
             for scope in security_scopes.scopes:
                 if scope not in verified_claim.permissions:
                     raise PERMISSIONS_EXCEPTION

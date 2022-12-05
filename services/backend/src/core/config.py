@@ -11,7 +11,6 @@ class Settings(BaseSettings):
     # AUTH0 configuration    
     AUTH0_DOMAIN: str
     AUTH0_ALGORITHMS: str = "RS256"
-    AUTH0_ISSUER: str
     AUTH0_DEFAULT_DB_CONNECTION: str = "Username-Password-Authentication"
     AUTH0_API_DEFAULT_AUDIENCE: str
     AUTH0_APPLICATION_CLIENT_ID: str

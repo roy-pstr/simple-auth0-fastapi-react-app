@@ -1,6 +1,6 @@
 from auth0.v3 import authentication, management
 
-from src.config import get_settings, Settings
+from src.core.config import get_settings, Settings
 
 def get_auth0_token_client() -> authentication.GetToken:
     """

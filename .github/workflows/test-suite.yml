@@ -27,12 +27,11 @@ jobs:
           virtualenvs-create: true
 
       - name: "Backend - install dependencies"
-        run: "cd backend && scripts/install"
+        run: "cd services/backend && scripts/install"
       - name: "Backend - run tests"
-        run: "cd backend && scripts/test"
+        run: "cd services/backend && scripts/test"
         env:
           AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
-          AUTH0_ISSUER: ${{ secrets.AUTH0_ISSUER }}
           AUTH0_API_DEFAULT_AUDIENCE: ${{ secrets.AUTH0_API_DEFAULT_AUDIENCE }}
           AUTH0_APPLICATION_CLIENT_ID: ${{ secrets.AUTH0_APPLICATION_CLIENT_ID }}
           AUTH0_TEST_USERNAME: ${{ secrets.AUTH0_TEST_USERNAME }}

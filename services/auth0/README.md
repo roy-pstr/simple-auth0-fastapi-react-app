@@ -10,6 +10,7 @@ At the end of this stage you should have all the environment variables needed to
 1. Sign Up
 2. Create tenant
 3. Create Application
+    - Add "http://localhost/token/callback" to "Allowed Callback URLs" (this is for the social login flow to allow callback from auth0 back to the server).
 4. Create API
     - create permission 'test:read'
 5. Create test user
