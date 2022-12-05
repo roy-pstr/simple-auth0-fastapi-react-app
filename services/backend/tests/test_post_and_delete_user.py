@@ -1,11 +1,13 @@
-import pytest
 import time
+from uuid import uuid4
+
+import pytest
 from fastapi.testclient import TestClient
 
 mark_parametrize = [
     (
         {
-            "email": "user@example.com",
+            "email": f"user_{str(uuid4())[-8:]}@example.com",
             "password": "secret234!@#$!@",
             "given_name": "string",
             "family_name": "string",
