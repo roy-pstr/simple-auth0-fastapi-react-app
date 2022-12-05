@@ -9,7 +9,6 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.7"
 fastapi = {extras = ["all"], version = "^0.87.0"}
-requests = "^2.28.1"
 python-jose = {extras = ["cryptography"], version = "^3.3.0"}
 auth0-python = "^3.24.0"
 

@@ -1,7 +1,7 @@
 import logging
 from typing import Optional
 
-import requests
+import httpx
 
 from fastapi import HTTPException
 from fastapi import status
@@ -25,7 +25,7 @@ PERMISSIONS_EXCEPTION = HTTPException(
 )
 
 settings = get_settings()
-JWKS = requests.get(f"https://{settings.AUTH0_DOMAIN}/.well-known/jwks.json").json()
+JWKS = httpx.get(f"https://{settings.AUTH0_DOMAIN}/.well-known/jwks.json").json()
 
 
 class TokenTools:
