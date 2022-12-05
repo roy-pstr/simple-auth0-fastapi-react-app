@@ -26,7 +26,6 @@ Go to `services/frontend/README.md`
 Go to `services/auth0/README.md`
 
 ## Open Tasks
-- Better Auth0 README on how to create an Auth0 env
 - A script for auto create Auth0 environment given Auth0 Management credentials only 
 - Upgrade frontend user interface
 - Add deployment (docker-compose ? )
