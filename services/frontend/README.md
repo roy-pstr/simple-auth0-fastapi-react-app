@@ -14,11 +14,12 @@ npm install
 cd frontend
 touch .env
 ```
-Set the following variables in the `.env` file:
+Set the following variables in the `.env` file (use corresponding values from backend .env file):
 ```bash
 REACT_APP_BACKEND_URL="http://localhost"
 REACT_APP_AUTH0_DOMAIN=
 REACT_APP_AUTH0_API_DEFAULT_AUDIENCE=
+REACT_APP_AUTH0_APPLICATION_CLIENT_ID=
 ```
 
 ## Testing

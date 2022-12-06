@@ -78,7 +78,7 @@ const Login = ({ setToken }) => {
   }
 
   function onLoginWithGoogle() {
-    window.location.href =`https://${process.env.REACT_APP_AUTH0_DOMAIN}/authorize?response_type=token&scope=openid%20profile%20email&audience=${process.env.REACT_APP_AUTH0_API_DEFAULT_AUDIENCE}&client_id=OMRVnZSFCuvHe3PVRBykkQYqxXoul6Cn&redirect_uri=${window.location.origin}/login/callback&connection=google-oauth2`;
+    window.location.href =`https://${process.env.REACT_APP_AUTH0_DOMAIN}/authorize?response_type=token&scope=openid%20profile%20email&audience=${process.env.REACT_APP_AUTH0_API_DEFAULT_AUDIENCE}&client_id=${process.env.REACT_APP_AUTH0_APPLICATION_CLIENT_ID}&redirect_uri=${window.location.origin}/login/callback&connection=google-oauth2`;
   }
 
   function onSignUp() {

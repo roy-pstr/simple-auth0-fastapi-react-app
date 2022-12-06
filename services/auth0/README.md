@@ -20,7 +20,8 @@ At the end of this stage you should have all the environment variables needed to
 4. Create an Application
     - "Applications" -> "Applications" -> "+ Create Application" -> "Single Page Web Applications", Name: "Backend Test App"
     - Goto "Backend Test App" and use the Client ID and Client Secret for AUTH0_APPLICATION_CLIENT_ID, AUTH0_APPLICATION_CLIENT_SECRET.
-    - Add "http://localhost/token/callback" to "Allowed Callback URLs" (this is for the social login flow to allow callback from auth0 back to the server).
+    - Add "http://localhost/token/callback" to "Allowed Callback URLs" (this is for the server side social login).
+    - Add "http://localhost:3000/login/callback" to "Allowed Callback URLs" (this is for the client side social login).
 5. Create test user
     - "User Management" -> "+ Create User" -> Enter any email and password, "Create".
     - Use those credentials for AUTH0_TEST_USERNAME and AUTH0_TEST_PASSWORD
