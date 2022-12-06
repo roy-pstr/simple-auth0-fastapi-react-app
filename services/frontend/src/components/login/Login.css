@@ -1,0 +1,25 @@
+.login-container {
+    height: 100vh;
+    background-color: #313131;
+    display: grid;
+    grid-template-columns: 0.4fr 0.3fr 0.4fr;
+    grid-template-rows: 0.4fr 0.3fr 0.4fr;
+}
+
+.login-box {
+    height: 350px;
+    background-color: #eeeeee;
+    border-radius: 10px;
+    padding: 8px;
+    box-shadow: 2px 5px 5px #000000;
+}
+
+.margin {
+    background-color: #313131;
+}
+
+.or {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+}
