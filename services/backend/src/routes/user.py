@@ -2,7 +2,7 @@ import typing
 from fastapi import APIRouter
 from fastapi import Depends
 from fastapi import HTTPException
-from pydantic import BaseModel, AnyUrl
+from pydantic import BaseModel, AnyUrl, EmailStr
 from auth0.v3.exceptions import Auth0Error
 
 from src.security.funcs import verify_token
@@ -26,7 +26,7 @@ async def read_user_me(
 
 class CreateUser(BaseModel):
     connection: str = settings.AUTH0_DEFAULT_DB_CONNECTION
-    email: str
+    email: EmailStr
     password: str
     name: str
     verify_email: bool = False  # Whether the user will receive a verification email after creation (true) or no email (false). Overrides behavior of email_verified parameter.
