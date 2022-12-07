@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, forwardRef } from 'react'
 
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import MuiAlert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
 // import LoginIcon from '@mui/icons-material/Login';
 import IconButton from '@mui/material/IconButton';
 import InputLabel from '@mui/material/InputLabel';
@@ -12,6 +14,7 @@ import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
+import FormHelperText from '@mui/material/FormHelperText';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import './Login.css'
@@ -30,9 +33,24 @@ const GoogleIcon = () => {
 const Login = ({ setToken }) => {
   const location = useLocation()
   const navigator = useNavigate()
+
+  // password
   const [password, setPassword] = useState("")
-  const [email, setEmail] = useState("")
+  const [passwordError, setPasswordError] = useState(false)
+  const [passwordErrorMsg, setPasswordErrorMsg] = useState("")
   const [showPassword, setShowPassword] = useState(false)
+
+  // email
+  const [email, setEmail] = useState("")
+  const [emailError, setEmailError] = useState(false)
+  const [emailErrorMsg, setEmailErrorMsg] = useState("")
+
+  // snackbar alert
+  const [snackbar, setSnackbar] = useState("")
+  const Alert = forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+  
   
   // TODO: fix it
   useEffect(() => {
@@ -47,6 +65,18 @@ const Login = ({ setToken }) => {
     }
 
   },[location])
+
+  function onSetPassword(val) {
+    setPasswordError(false)
+    setPasswordErrorMsg("")
+    setPassword(val)
+  }
+
+  function onSetEmail(val) {
+    setEmailError(false)
+    setEmailErrorMsg("")
+    setEmail(val)
+  }
 
   function validatePassword() {
     return true
@@ -73,7 +103,13 @@ const Login = ({ setToken }) => {
       ).then(response => {
           return response.json()
       }).then(res => {
-          setToken(res.access_token)
+          if (res.detail) {
+            setSnackbar(res.detail)
+          }
+          else {
+            setToken(res.access_token)
+          }
+          console.log(res)
       })
   }
 
@@ -91,7 +127,7 @@ const Login = ({ setToken }) => {
     params.append("password", password);
 
     fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/token`, {
+      `${process.env.REACT_APP_BACKEND_URL}/user`, {
           method: "POST",
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -103,7 +139,17 @@ const Login = ({ setToken }) => {
       ).then(response => {
           return response.json()
       }).then(res => {
-          console.log(res)
+        if (res.detail) {
+          if (res.detail.includes("Password")) {
+            setPasswordError(true)
+            setPasswordErrorMsg(res.detail)
+          }
+          if (res.detail.includes("email")) {
+            setEmailError(true)
+            setEmailErrorMsg(res.detail)
+          }
+          console.log(res.detail)
+        }
       })
   }
 
@@ -114,8 +160,13 @@ const Login = ({ setToken }) => {
       <Box className='margin'></Box>
       <Box className='margin'></Box>
       <Box className='login-box'>
-      <Stack direction='column' spacing={1}>
-        <Box sx={{textAlign: 'center'}}>
+        <Snackbar open={snackbar !== ""} autoHideDuration={3000} onClose={() => setSnackbar("")}>
+          <Alert onClose={() => setSnackbar("")} severity="error" sx={{ width: '100%' }}>
+              {snackbar}
+          </Alert>
+        </Snackbar>
+        <Stack direction='column' spacing={1}>
+          <Box sx={{textAlign: 'center'}}>
             <FormControl sx={{ m: 1, width: '95%' }} variant="outlined">
                 <InputLabel>
                     Email
@@ -123,21 +174,28 @@ const Login = ({ setToken }) => {
                 <OutlinedInput
                     type={'text'}
                     value={email}
-                    onChange={(event) => setEmail(event.target.value)}
+                    onChange={(event) => onSetEmail(event.target.value)}
+                    error={emailError}
                     label="Username"
                 />
+                {emailError && (
+                  <FormHelperText error>
+                    {emailErrorMsg}
+                  </FormHelperText>
+                )}
             </FormControl>
-        </Box>
+          </Box>
 
-        <Box sx={{textAlign: 'center'}}>
-          <FormControl sx={{ m: 1, width: '95%' }} variant="outlined">
-            <InputLabel>
-                Password
-            </InputLabel>
+          <Box sx={{textAlign: 'center'}}>
+            <FormControl sx={{ m: 1, width: '95%' }} variant="outlined">
+              <InputLabel>
+                  Password
+              </InputLabel>
               <OutlinedInput
                 type={showPassword ? 'text' : 'password'}
                 value={password}
-                onChange={(event) => setPassword(event.target.value)}
+                onChange={(event) => onSetPassword(event.target.value)}
+                error={passwordError}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
@@ -152,6 +210,11 @@ const Login = ({ setToken }) => {
                 }
                 label="Password"
               />
+              {passwordError && (
+                <FormHelperText error>
+                  {passwordErrorMsg}
+                </FormHelperText>
+              )}
             </FormControl>
           </Box>
 
