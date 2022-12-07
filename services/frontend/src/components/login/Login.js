@@ -91,7 +91,7 @@ const Login = ({ setToken }) => {
     params.append("password", password);
 
     fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/token`, {
+      `${process.env.REACT_APP_BACKEND_URL}/user`, {
           method: "POST",
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
