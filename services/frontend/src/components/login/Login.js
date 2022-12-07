@@ -144,7 +144,7 @@ const Login = ({ setToken }) => {
             setPasswordError(true)
             setPasswordErrorMsg(res.detail)
           }
-          if (res.detail.includes("email")) {
+          if (res.detail.includes("email") || res.detail.includes("user already exists")) {
             setEmailError(true)
             setEmailErrorMsg(res.detail)
           }
