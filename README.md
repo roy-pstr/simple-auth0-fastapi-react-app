@@ -27,7 +27,6 @@ Go to `services/auth0/README.md`
 
 ## Open Tasks
 - A script for auto create Auth0 environment given Auth0 Management credentials only 
-- Upgrade frontend user interface
 - Add deployment (docker-compose ? )
 ## Contributing
 
