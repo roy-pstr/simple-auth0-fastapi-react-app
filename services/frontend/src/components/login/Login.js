@@ -106,7 +106,7 @@ const Login = ({ setToken }) => {
       if (res.status === 200) {
         alert('Sign up successful')
       } else {
-        let errorMessage = res.detail.msg || res.detail[0].msg
+        let errorMessage = res.detail || res.detail[0].msg
         alert('Sign up failed. ' + errorMessage)
       }
     })
