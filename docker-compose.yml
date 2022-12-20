@@ -1,0 +1,21 @@
+
+version: "3.9"
+services:
+    frontend:
+        build:
+            context: ./services/frontend/
+        image: fullstack-react-fastapi-auth0-frontend
+        env_file:
+          - ./services/frontend/.env
+        ports:
+            - 3000:3000
+
+    backend:
+        build:
+            context: ./services/backend/
+            network: host
+        image: fullstack-react-fastapi-auth0-backend
+        env_file:
+          - ./services/backend/.env
+        ports:
+            - 80:80

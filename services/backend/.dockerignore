@@ -1,0 +1,9 @@
+.env
+.env.**
+.git
+.vscode
+.pytest_cache
+.github
+.dockerignore
+Dockerfile
+docker-compose.yml
