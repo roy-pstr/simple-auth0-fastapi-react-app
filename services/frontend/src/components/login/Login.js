@@ -101,11 +101,16 @@ const Login = ({ setToken }) => {
           }),
       }
       ).then(response => {
-          return response.json()
-      }).then(res => {
-          console.log(res)
-      })
-  }
+        return response.json()
+    }).then(res => {
+      if (res.status === 200) {
+        alert('Sign up successful')
+      } else {
+        let errorMessage = res.detail[0].msg || res.detail
+        alert('Sign up failed. ' + errorMessage)
+      }
+    })
+}
 
   return (
     <Box className='login-container'>
