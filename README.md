@@ -9,13 +9,16 @@ This repo is for a quick start with Auth0.
 - Login (username and password)
 - Signup (username and password)
 - Google account login
-</br>
+
+
 ![Client side](./assets/login-view.png)
+
 ### Server-side
 - JWT verification
 - Private endpoint example (must have access token to get access)
 - Scoped-private endpoint example (must have access token and permissions to get access)
-</br>
+
+
 ![Server side](./assets/swagger.png)
 
 ## Services Setup
