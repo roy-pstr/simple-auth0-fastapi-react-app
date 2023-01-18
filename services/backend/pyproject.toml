@@ -7,7 +7,7 @@ license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = ">=3.7.2"
 fastapi = {extras = ["all"], version = "^0.87.0"}
 python-jose = {extras = ["cryptography"], version = "^3.3.0"}
 auth0-python = "^3.24.0"
@@ -15,6 +15,7 @@ auth0-python = "^3.24.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.2.0"
+pylint = "^2.15.9"
 
 [build-system]
 requires = ["poetry-core"]

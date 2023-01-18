@@ -4,6 +4,9 @@ A simple application for user authentication & authorization (JWT based) and use
 </br>
 This repo is for a quick start with Auth0.
 
+![Client side](./assets/login-view.png)
+![Server side](./assets/swagger.png)
+
 ## Application Features
 ### Client-side
 - Login (username and password)
