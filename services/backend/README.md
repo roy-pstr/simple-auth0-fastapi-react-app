@@ -14,7 +14,10 @@ This is a FastAPI backend for a simple user management and authentication servic
 - FastAPI
 
 ## Setup
-### Python environment  
+### Poetry
+Make sure you have the package manager [poetry](https://python-poetry.org/docs/) preview version installed. (>1.2.0)
+
+### Python environment 
 Use the package manager [poetry](https://python-poetry.org/docs/) to install python dependencies.
 ```bash
 ./scripts/install
