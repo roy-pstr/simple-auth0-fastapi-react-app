@@ -1,3 +1,8 @@
+<p align="center">
+<img src="assets/react_auth0_fapi.png" data-canonical-src="assets/react_auth0_fapi.png" width=400/>
+</p>
+
+
 # Simple Auth0 FastAPI React Application
 
 A simple application for user authentication & authorization (JWT based) and user management based on Auth0 service. Backend is in Python with FastAPI, integrated with auth0 client. Frontend is vanilla react application contains simple login, signup form, and google account login.
