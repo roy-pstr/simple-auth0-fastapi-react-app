@@ -11,6 +11,7 @@ python = ">=3.7.2"
 fastapi = {extras = ["all"], version = "^0.87.0"}
 python-jose = {extras = ["cryptography"], version = "^3.3.0"}
 auth0-python = "^3.24.0"
+pydantic = "^1.10"
 
 
 [tool.poetry.group.dev.dependencies]
